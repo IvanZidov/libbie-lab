@@ -1,0 +1,4185 @@
+{
+  "notice": "Scripted development evidence only. No human annotations created.",
+  "before": {
+    "id": "15698949-2394-4b5a-be14-4744e770e853",
+    "baseline": "v1",
+    "candidate": "v2",
+    "versionHashes": [
+      "094196177c69ea50b35588052081fb8557a2b579a1feea72c49fc25fad6b45f0",
+      "0701bb513002c98d1d8c3e5609fdd663850967db82343c91ff48ff4a3df513b6"
+    ],
+    "datasetHash": "ec851c83c7e3fbebf90a06fe6dd037d303bb5ccf54962a1c43358e449e655553",
+    "inventoryHash": "a4886e7dc79ad15ca2d482a8b3db9a375e70a37860f49d53544b048cb5b70552",
+    "fieldMetrics": [
+      {
+        "version": "v1",
+        "fields": {
+          "clientType": {
+            "matched": 12,
+            "total": 13
+          },
+          "leadStage": {
+            "matched": 12,
+            "total": 12
+          },
+          "areas": {
+            "matched": 13,
+            "total": 13
+          }
+        },
+        "wholeCases": 12
+      },
+      {
+        "version": "v2",
+        "fields": {
+          "clientType": {
+            "matched": 12,
+            "total": 13
+          },
+          "leadStage": {
+            "matched": 12,
+            "total": 12
+          },
+          "areas": {
+            "matched": 13,
+            "total": 13
+          }
+        },
+        "wholeCases": 12
+      }
+    ],
+    "invariantChecks": {
+      "correctionPrecedence": true,
+      "unapprovedSearchBlocked": true
+    },
+    "sourceHash": "3c2e12d233959b62e71223f147d2a92f9a7f28df11c144ad8151af21fa115383",
+    "mode": "scripted replay",
+    "status": "completed",
+    "gate": "failed_gates",
+    "reviewed": 0,
+    "total": 13,
+    "rows": [
+      {
+        "caseId": "S01",
+        "title": "The family looking for somewhere cosy",
+        "family": "S01-family",
+        "reviewed": false,
+        "inputHash": "d75ba4c1edb9be79ef173406dbdb8f34c735896a23af87c1b7fd13968ffa0a46",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [],
+          "unconfirmedAreas": [
+            "Arabian Ranches"
+          ],
+          "money": {
+            "meaning": "target",
+            "target": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "dogs": 2
+          },
+          "moveBefore": {
+            "year": 2026,
+            "month": 8,
+            "approximate": "mid-month",
+            "sourceOfYear": "fictional scenario clock"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "unconfirmed",
+                  "evidence": "S01-0"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 500000,
+                "min": null,
+                "max": null,
+                "rawText": "Around 500k a year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2,
+                "moveBefore": "2026-08-15",
+                "style": "warm and homely"
+              },
+              "evidence": {
+                "bedrooms": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "garden": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "pool": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "dogs": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "clientType": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                },
+                "money": {
+                  "messageId": "S01-3",
+                  "quote": "Around 500k a year."
+                },
+                "moveBefore": {
+                  "messageId": "S01-5",
+                  "quote": "We can move any time before mid-August. The kids start school then."
+                },
+                "style": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.20862499999998363,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "unconfirmed",
+                  "evidence": "S01-0"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 500000,
+                "min": null,
+                "max": null,
+                "rawText": "Around 500k a year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2,
+                "moveBefore": "2026-08-15",
+                "style": "warm and homely"
+              },
+              "evidence": {
+                "bedrooms": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "garden": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "pool": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "dogs": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "clientType": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                },
+                "money": {
+                  "messageId": "S01-3",
+                  "quote": "Around 500k a year."
+                },
+                "moveBefore": {
+                  "messageId": "S01-5",
+                  "quote": "We can move any time before mid-August. The kids start school then."
+                },
+                "style": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05637499999997431,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S02",
+        "title": "Owner is selling, even when the broker mentions buying",
+        "family": "S02-family",
+        "reviewed": false,
+        "inputHash": "66c68ad11496960545b8b2b4ce669633d32ab878d197d43d14e674fe69968a5c",
+        "expected": {
+          "clientType": "Seller",
+          "leadStage": "Viewing",
+          "acceptedAreas": [
+            "Nad Al Sheba"
+          ],
+          "money": {
+            "meaning": "asking_price",
+            "target": 8000000,
+            "period": "purchase"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Viewing",
+              "areas": [
+                {
+                  "name": "Nad Al Sheba",
+                  "status": "accepted",
+                  "evidence": "S02-0"
+                }
+              ],
+              "money": {
+                "meaning": "asking_price",
+                "period": "purchase",
+                "target": 8000000,
+                "min": null,
+                "max": null,
+                "rawText": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S02-2",
+                  "quote": "For now I am only selling. Please focus on that."
+                },
+                "areas": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "money": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "leadStage": {
+                  "messageId": "S02-4",
+                  "quote": "Saturday morning works."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.20004199999999628,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Viewing",
+              "areas": [
+                {
+                  "name": "Nad Al Sheba",
+                  "status": "accepted",
+                  "evidence": "S02-0"
+                }
+              ],
+              "money": {
+                "meaning": "asking_price",
+                "period": "purchase",
+                "target": 8000000,
+                "min": null,
+                "max": null,
+                "rawText": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S02-2",
+                  "quote": "For now I am only selling. Please focus on that."
+                },
+                "areas": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "money": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "leadStage": {
+                  "messageId": "S02-4",
+                  "quote": "Saturday morning works."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.07949999999999591,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S03",
+        "title": "A broker estimate is not the owner’s stated rent",
+        "family": "S03-family",
+        "reviewed": false,
+        "inputHash": "72140d533fe669a16e769683e1577581752388f9fb43b3fcde370ff9d82ca636",
+        "expected": {
+          "clientType": "Landlord",
+          "leadStageNeedsAdjudication": [
+            "Inquiry",
+            "Qualifying"
+          ],
+          "acceptedAreas": [
+            "Bluewaters"
+          ],
+          "money": {
+            "meaning": "unknown",
+            "target": null,
+            "period": null
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Landlord",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Bluewaters",
+                  "status": "accepted",
+                  "evidence": "S03-1"
+                }
+              ],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                },
+                "areas": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.07441600000001358,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Landlord",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Bluewaters",
+                  "status": "accepted",
+                  "evidence": "S03-1"
+                }
+              ],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                },
+                "areas": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                }
+              },
+              "goalChange": false,
+              "conflicts": [
+                "Stage boundary needs adjudication: Inquiry or Qualifying."
+              ],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.048332999999985304,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S04",
+        "title": "An offer and a rejected alternative",
+        "family": "S04-family",
+        "reviewed": false,
+        "inputHash": "9b4036994e2c06ed53a11f01d2fcdb28f4c1adb6b54ab91bf7a49bd4b990cb91",
+        "expected": {
+          "clientType": "Buyer",
+          "leadStage": "Negotiation",
+          "acceptedAreas": [
+            "Town Square"
+          ],
+          "rejectedAreas": [
+            "Villanova"
+          ],
+          "money": {
+            "meaning": "offer",
+            "target": 4200000,
+            "period": "purchase"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Buyer",
+              "leadStage": "Negotiation",
+              "areas": [
+                {
+                  "name": "Town Square",
+                  "status": "accepted",
+                  "evidence": "S04-0"
+                },
+                {
+                  "name": "Villanova",
+                  "status": "rejected",
+                  "evidence": "S04-0"
+                }
+              ],
+              "money": {
+                "meaning": "offer",
+                "period": "purchase",
+                "target": 4200000,
+                "min": null,
+                "max": null,
+                "rawText": "Yes, offer 4.2 million. We can move quickly."
+              },
+              "requirements": {},
+              "evidence": {
+                "areas": {
+                  "messageId": "S04-0",
+                  "quote": "We viewed Town Square and Villanova. Town Square is the one. Rule out Villanova."
+                },
+                "leadStage": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "clientType": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "money": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.13087500000000318,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Buyer",
+              "leadStage": "Negotiation",
+              "areas": [
+                {
+                  "name": "Town Square",
+                  "status": "accepted",
+                  "evidence": "S04-0"
+                },
+                {
+                  "name": "Villanova",
+                  "status": "rejected",
+                  "evidence": "S04-0"
+                }
+              ],
+              "money": {
+                "meaning": "offer",
+                "period": "purchase",
+                "target": 4200000,
+                "min": null,
+                "max": null,
+                "rawText": "Yes, offer 4.2 million. We can move quickly."
+              },
+              "requirements": {},
+              "evidence": {
+                "areas": {
+                  "messageId": "S04-0",
+                  "quote": "We viewed Town Square and Villanova. Town Square is the one. Rule out Villanova."
+                },
+                "leadStage": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "clientType": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "money": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05720900000000029,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S05",
+        "title": "Chit-chat should not reset a lead",
+        "family": "S05-family",
+        "reviewed": false,
+        "inputHash": "4e44329af53541435fe521ce6c0080d54d25741491d1dc03918077586101ef56",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 450000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 4
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S05-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "areas": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "money": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "bedrooms": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.15625,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S05-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "areas": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "money": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "bedrooms": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.10775000000001,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S06",
+        "title": "No property intent yet",
+        "family": "S06-family",
+        "reviewed": false,
+        "inputHash": "8c51983ebf279ca932b87f7ada8e0d54e86f9e32f16c39aeadcd964afb22c344",
+        "expected": {
+          "clientType": null,
+          "leadStage": null,
+          "acceptedAreas": [],
+          "money": {
+            "meaning": "unknown",
+            "period": null
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": null,
+              "leadStage": null,
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {},
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.030583000000007132,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": null,
+              "leadStage": null,
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {},
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.01883399999999824,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S07",
+        "title": "Preserve a range and a location constraint",
+        "family": "S07-family",
+        "reviewed": false,
+        "inputHash": "d104ad6646eb975ccef168f80630d4574eea342a41c3b043cb8a0c7323046edc",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Arabian Ranches",
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "range",
+            "min": 450000,
+            "max": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "quiet": "preferred",
+            "metro": "walking threshold unresolved"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                },
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                }
+              ],
+              "money": {
+                "meaning": "range",
+                "period": "year",
+                "target": null,
+                "min": 450000,
+                "max": 500000,
+                "rawText": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "quiet": "preferred",
+                "metro": "walking threshold unresolved"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "areas": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "money": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "bedrooms": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "garden": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                },
+                "pool": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.min": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.quiet": true,
+              "requirement.metro": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.09637500000002319,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                },
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                }
+              ],
+              "money": {
+                "meaning": "range",
+                "period": "year",
+                "target": null,
+                "min": 450000,
+                "max": 500000,
+                "rawText": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "quiet": "preferred",
+                "metro": "walking threshold unresolved"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "areas": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "money": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "bedrooms": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "garden": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                },
+                "pool": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.min": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.quiet": true,
+              "requirement.metro": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.07933300000001964,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S08",
+        "title": "Monthly rent is not annual rent",
+        "family": "S08-family",
+        "reviewed": false,
+        "inputHash": "ac9563f67e71c5d055c8bdf07f70b35dbc2dba230c5404f012abcd2bc9396085",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 40000,
+            "period": "month",
+            "annualEquivalent": 480000
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S08-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "month",
+                "target": null,
+                "min": null,
+                "max": 40000,
+                "rawText": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+              },
+              "requirements": {
+                "bedrooms": 5
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "areas": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "money": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "bedrooms": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.06408300000001077,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S08-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "month",
+                "target": null,
+                "min": null,
+                "max": 40000,
+                "rawText": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+              },
+              "requirements": {
+                "bedrooms": 5
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "areas": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "money": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "bedrooms": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05279099999998493,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S09",
+        "title": "Current intent changes",
+        "family": "S09-family",
+        "reviewed": false,
+        "inputHash": "1e3380019a4a937ef4e7e7c386d0995c038b3683a8a01adf4724b6fd6afa0bc7",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "target",
+            "target": 450000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 4
+          },
+          "goalChange": true
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S09-2"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 450000,
+                "min": null,
+                "max": null,
+                "rawText": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "areas": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "money": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S09-4",
+                  "quote": "Four bedrooms please."
+                }
+              },
+              "goalChange": true,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.09158299999998576,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S09-2"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 450000,
+                "min": null,
+                "max": null,
+                "rawText": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "areas": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "money": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S09-4",
+                  "quote": "Four bedrooms please."
+                }
+              },
+              "goalChange": true,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05895799999998985,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S10",
+        "title": "Nurture at the client’s chosen time",
+        "family": "S10-family",
+        "reviewed": false,
+        "inputHash": "74f1dd68ac8bf0ca9d1f558d224e12413875c23898f6462dafc78cfa73f456eb",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [],
+          "money": {
+            "meaning": "unknown",
+            "period": null
+          },
+          "nurture": {
+            "year": 2026,
+            "month": 12,
+            "channel": "simulated_whatsapp",
+            "noEarlierListings": true
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S10-0",
+                  "quote": "We will need to rent after January next year. Please check back in December this year."
+                },
+                "nurture": {
+                  "messageId": "S10-2",
+                  "quote": "No, please wait until December. WhatsApp is fine."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": "2026-12-01",
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.020999999999986585,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S10-0",
+                  "quote": "We will need to rent after January next year. Please check back in December this year."
+                },
+                "nurture": {
+                  "messageId": "S10-2",
+                  "quote": "No, please wait until December. WhatsApp is fine."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": "2026-12-01",
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.01558400000001825,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S11",
+        "title": "A listing description tries to give instructions",
+        "family": "S11-family",
+        "reviewed": false,
+        "inputHash": "2be6137eb6e923ae4b61b41ce63ba895c8629f38586d18b62e5423d2ba102a7b",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "dogs": 2,
+            "petsAllowedRequired": true
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S11-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 500000,
+                "rawText": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "areas": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "money": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "bedrooms": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "garden": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "pool": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "dogs": {
+                  "messageId": "S11-2",
+                  "quote": "Two dogs. They must be allowed."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "requirement.petsAllowedRequired": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.0643750000000125,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S11-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 500000,
+                "rawText": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "areas": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "money": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "bedrooms": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "garden": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "pool": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "dogs": {
+                  "messageId": "S11-2",
+                  "quote": "Two dogs. They must be allowed."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "requirement.petsAllowedRequired": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05216699999999719,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S12",
+        "title": "No match means no match",
+        "family": "S12-family",
+        "reviewed": false,
+        "inputHash": "ff9dcdebcf438c8d0f7210420cd2f321d2ac4a78b89eed258caac5c6c2f4f82d",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Arabian Ranches"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 100000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "poolType": "private"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S12-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 100000,
+                "rawText": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "poolType": "private"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "areas": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "money": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "bedrooms": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "garden": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "pool": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.poolType": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "noMatch": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.0599589999999921,
+            "errors": []
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S12-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 100000,
+                "rawText": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "poolType": "private"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "areas": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "money": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "bedrooms": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "garden": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "pool": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.poolType": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "noMatch": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.049000000000006594,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S13",
+        "title": "Improvement demo: not selling, looking to rent",
+        "family": "negated-owner-intent",
+        "reviewed": false,
+        "inputHash": "11cf4937a0a752c8a213b4c2bf161c3d5f36f015c1b7ea509276ddc7dc7cc508",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "period": "year",
+            "max": 450000
+          },
+          "requirements": {
+            "bedrooms": 4
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S13-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "areas": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "money": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": false,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": false,
+            "latencyMs": 0.04249999999998977,
+            "errors": [
+              "clientType"
+            ]
+          },
+          {
+            "version": "v2",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S13-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "areas": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "money": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": false,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": false,
+            "latencyMs": 0.04087499999999977,
+            "errors": [
+              "clientType"
+            ]
+          }
+        ],
+        "regression": false
+      }
+    ],
+    "regressions": 0,
+    "fixed": 0,
+    "latencyMs": 4.177416999999991,
+    "cost": null,
+    "usage": null,
+    "uncertainty": "13 synthetic scenario families, exposed during development. No production inference or independent human review.",
+    "exposure": "Development fixtures, exposed during implementation",
+    "at": "2026-09-14T12:44:04.924Z"
+  },
+  "after": {
+    "id": "7ca462f4-d4b8-4b42-8bea-f645804d7608",
+    "baseline": "v1",
+    "candidate": "v3",
+    "versionHashes": [
+      "094196177c69ea50b35588052081fb8557a2b579a1feea72c49fc25fad6b45f0",
+      "6d107a33b7db64d9a4f07f8411759ecedca9835b9d2b98221d87cfb3c965fead"
+    ],
+    "datasetHash": "ec851c83c7e3fbebf90a06fe6dd037d303bb5ccf54962a1c43358e449e655553",
+    "inventoryHash": "a4886e7dc79ad15ca2d482a8b3db9a375e70a37860f49d53544b048cb5b70552",
+    "fieldMetrics": [
+      {
+        "version": "v1",
+        "fields": {
+          "clientType": {
+            "matched": 12,
+            "total": 13
+          },
+          "leadStage": {
+            "matched": 12,
+            "total": 12
+          },
+          "areas": {
+            "matched": 13,
+            "total": 13
+          }
+        },
+        "wholeCases": 12
+      },
+      {
+        "version": "v3",
+        "fields": {
+          "clientType": {
+            "matched": 13,
+            "total": 13
+          },
+          "leadStage": {
+            "matched": 12,
+            "total": 12
+          },
+          "areas": {
+            "matched": 13,
+            "total": 13
+          }
+        },
+        "wholeCases": 13
+      }
+    ],
+    "invariantChecks": {
+      "correctionPrecedence": true,
+      "unapprovedSearchBlocked": true
+    },
+    "sourceHash": "3c2e12d233959b62e71223f147d2a92f9a7f28df11c144ad8151af21fa115383",
+    "mode": "scripted replay",
+    "status": "completed",
+    "gate": "insufficient_evidence",
+    "reviewed": 0,
+    "total": 13,
+    "rows": [
+      {
+        "caseId": "S01",
+        "title": "The family looking for somewhere cosy",
+        "family": "S01-family",
+        "reviewed": false,
+        "inputHash": "d75ba4c1edb9be79ef173406dbdb8f34c735896a23af87c1b7fd13968ffa0a46",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [],
+          "unconfirmedAreas": [
+            "Arabian Ranches"
+          ],
+          "money": {
+            "meaning": "target",
+            "target": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "dogs": 2
+          },
+          "moveBefore": {
+            "year": 2026,
+            "month": 8,
+            "approximate": "mid-month",
+            "sourceOfYear": "fictional scenario clock"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "unconfirmed",
+                  "evidence": "S01-0"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 500000,
+                "min": null,
+                "max": null,
+                "rawText": "Around 500k a year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2,
+                "moveBefore": "2026-08-15",
+                "style": "warm and homely"
+              },
+              "evidence": {
+                "bedrooms": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "garden": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "pool": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "dogs": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "clientType": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                },
+                "money": {
+                  "messageId": "S01-3",
+                  "quote": "Around 500k a year."
+                },
+                "moveBefore": {
+                  "messageId": "S01-5",
+                  "quote": "We can move any time before mid-August. The kids start school then."
+                },
+                "style": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.06541599999999903,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "unconfirmed",
+                  "evidence": "S01-0"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 500000,
+                "min": null,
+                "max": null,
+                "rawText": "Around 500k a year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2,
+                "moveBefore": "2026-08-15",
+                "style": "warm and homely"
+              },
+              "evidence": {
+                "bedrooms": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "garden": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "pool": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "dogs": {
+                  "messageId": "S01-1",
+                  "quote": "We're a family looking for a 5-bedroom house with a garden — we have two dogs — and a pool."
+                },
+                "clientType": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                },
+                "money": {
+                  "messageId": "S01-3",
+                  "quote": "Around 500k a year."
+                },
+                "moveBefore": {
+                  "messageId": "S01-5",
+                  "quote": "We can move any time before mid-August. The kids start school then."
+                },
+                "style": {
+                  "messageId": "S01-7",
+                  "quote": "Ideally somewhere that doesn't feel like a rental — we want it to feel like a home."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.1419159999999806,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S02",
+        "title": "Owner is selling, even when the broker mentions buying",
+        "family": "S02-family",
+        "reviewed": false,
+        "inputHash": "66c68ad11496960545b8b2b4ce669633d32ab878d197d43d14e674fe69968a5c",
+        "expected": {
+          "clientType": "Seller",
+          "leadStage": "Viewing",
+          "acceptedAreas": [
+            "Nad Al Sheba"
+          ],
+          "money": {
+            "meaning": "asking_price",
+            "target": 8000000,
+            "period": "purchase"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Viewing",
+              "areas": [
+                {
+                  "name": "Nad Al Sheba",
+                  "status": "accepted",
+                  "evidence": "S02-0"
+                }
+              ],
+              "money": {
+                "meaning": "asking_price",
+                "period": "purchase",
+                "target": 8000000,
+                "min": null,
+                "max": null,
+                "rawText": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S02-2",
+                  "quote": "For now I am only selling. Please focus on that."
+                },
+                "areas": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "money": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "leadStage": {
+                  "messageId": "S02-4",
+                  "quote": "Saturday morning works."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.06483299999999304,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Viewing",
+              "areas": [
+                {
+                  "name": "Nad Al Sheba",
+                  "status": "accepted",
+                  "evidence": "S02-0"
+                }
+              ],
+              "money": {
+                "meaning": "asking_price",
+                "period": "purchase",
+                "target": 8000000,
+                "min": null,
+                "max": null,
+                "rawText": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S02-2",
+                  "quote": "For now I am only selling. Please focus on that."
+                },
+                "areas": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "money": {
+                  "messageId": "S02-0",
+                  "quote": "I own a villa in Nad Al Sheba. I want to sell it for around 8 million."
+                },
+                "leadStage": {
+                  "messageId": "S02-4",
+                  "quote": "Saturday morning works."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.054417000000000826,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S03",
+        "title": "A broker estimate is not the owner’s stated rent",
+        "family": "S03-family",
+        "reviewed": false,
+        "inputHash": "72140d533fe669a16e769683e1577581752388f9fb43b3fcde370ff9d82ca636",
+        "expected": {
+          "clientType": "Landlord",
+          "leadStageNeedsAdjudication": [
+            "Inquiry",
+            "Qualifying"
+          ],
+          "acceptedAreas": [
+            "Bluewaters"
+          ],
+          "money": {
+            "meaning": "unknown",
+            "target": null,
+            "period": null
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Landlord",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Bluewaters",
+                  "status": "accepted",
+                  "evidence": "S03-1"
+                }
+              ],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                },
+                "areas": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.021208999999998923,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Landlord",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Bluewaters",
+                  "status": "accepted",
+                  "evidence": "S03-1"
+                }
+              ],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                },
+                "areas": {
+                  "messageId": "S03-1",
+                  "quote": "Possibly. What rent could I get?"
+                }
+              },
+              "goalChange": false,
+              "conflicts": [
+                "Stage boundary needs adjudication: Inquiry or Qualifying."
+              ],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.018458000000009633,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S04",
+        "title": "An offer and a rejected alternative",
+        "family": "S04-family",
+        "reviewed": false,
+        "inputHash": "9b4036994e2c06ed53a11f01d2fcdb28f4c1adb6b54ab91bf7a49bd4b990cb91",
+        "expected": {
+          "clientType": "Buyer",
+          "leadStage": "Negotiation",
+          "acceptedAreas": [
+            "Town Square"
+          ],
+          "rejectedAreas": [
+            "Villanova"
+          ],
+          "money": {
+            "meaning": "offer",
+            "target": 4200000,
+            "period": "purchase"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Buyer",
+              "leadStage": "Negotiation",
+              "areas": [
+                {
+                  "name": "Town Square",
+                  "status": "accepted",
+                  "evidence": "S04-0"
+                },
+                {
+                  "name": "Villanova",
+                  "status": "rejected",
+                  "evidence": "S04-0"
+                }
+              ],
+              "money": {
+                "meaning": "offer",
+                "period": "purchase",
+                "target": 4200000,
+                "min": null,
+                "max": null,
+                "rawText": "Yes, offer 4.2 million. We can move quickly."
+              },
+              "requirements": {},
+              "evidence": {
+                "areas": {
+                  "messageId": "S04-0",
+                  "quote": "We viewed Town Square and Villanova. Town Square is the one. Rule out Villanova."
+                },
+                "leadStage": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "clientType": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "money": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05158299999999372,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Buyer",
+              "leadStage": "Negotiation",
+              "areas": [
+                {
+                  "name": "Town Square",
+                  "status": "accepted",
+                  "evidence": "S04-0"
+                },
+                {
+                  "name": "Villanova",
+                  "status": "rejected",
+                  "evidence": "S04-0"
+                }
+              ],
+              "money": {
+                "meaning": "offer",
+                "period": "purchase",
+                "target": 4200000,
+                "min": null,
+                "max": null,
+                "rawText": "Yes, offer 4.2 million. We can move quickly."
+              },
+              "requirements": {},
+              "evidence": {
+                "areas": {
+                  "messageId": "S04-0",
+                  "quote": "We viewed Town Square and Villanova. Town Square is the one. Rule out Villanova."
+                },
+                "leadStage": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "clientType": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                },
+                "money": {
+                  "messageId": "S04-2",
+                  "quote": "Yes, offer 4.2 million. We can move quickly."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.04508300000000531,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S05",
+        "title": "Chit-chat should not reset a lead",
+        "family": "S05-family",
+        "reviewed": false,
+        "inputHash": "4e44329af53541435fe521ce6c0080d54d25741491d1dc03918077586101ef56",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 450000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 4
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S05-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "areas": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "money": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "bedrooms": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05304200000000492,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S05-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "areas": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "money": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                },
+                "bedrooms": {
+                  "messageId": "S05-0",
+                  "quote": "We need to rent in Mudon. Up to 450k a year, four bedrooms."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.04841600000000312,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S06",
+        "title": "No property intent yet",
+        "family": "S06-family",
+        "reviewed": false,
+        "inputHash": "8c51983ebf279ca932b87f7ada8e0d54e86f9e32f16c39aeadcd964afb22c344",
+        "expected": {
+          "clientType": null,
+          "leadStage": null,
+          "acceptedAreas": [],
+          "money": {
+            "meaning": "unknown",
+            "period": null
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": null,
+              "leadStage": null,
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {},
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.014833000000010088,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": null,
+              "leadStage": null,
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {},
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.012917000000015832,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S07",
+        "title": "Preserve a range and a location constraint",
+        "family": "S07-family",
+        "reviewed": false,
+        "inputHash": "d104ad6646eb975ccef168f80630d4574eea342a41c3b043cb8a0c7323046edc",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Arabian Ranches",
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "range",
+            "min": 450000,
+            "max": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "quiet": "preferred",
+            "metro": "walking threshold unresolved"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                },
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                }
+              ],
+              "money": {
+                "meaning": "range",
+                "period": "year",
+                "target": null,
+                "min": 450000,
+                "max": 500000,
+                "rawText": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "quiet": "preferred",
+                "metro": "walking threshold unresolved"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "areas": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "money": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "bedrooms": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "garden": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                },
+                "pool": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.min": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.quiet": true,
+              "requirement.metro": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05620899999999551,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                },
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S07-0"
+                }
+              ],
+              "money": {
+                "meaning": "range",
+                "period": "year",
+                "target": null,
+                "min": 450000,
+                "max": 500000,
+                "rawText": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "quiet": "preferred",
+                "metro": "walking threshold unresolved"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "areas": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "money": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "bedrooms": {
+                  "messageId": "S07-0",
+                  "quote": "We want to rent a five-bedroom house in Arabian Ranches or Mudon, between 450k and 500k per year."
+                },
+                "garden": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                },
+                "pool": {
+                  "messageId": "S07-2",
+                  "quote": "A garden and pool. Somewhere quiet, ideally a short walk from a metro station."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.min": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.quiet": true,
+              "requirement.metro": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.04995800000000372,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S08",
+        "title": "Monthly rent is not annual rent",
+        "family": "S08-family",
+        "reviewed": false,
+        "inputHash": "ac9563f67e71c5d055c8bdf07f70b35dbc2dba230c5404f012abcd2bc9396085",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 40000,
+            "period": "month",
+            "annualEquivalent": 480000
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S08-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "month",
+                "target": null,
+                "min": null,
+                "max": 40000,
+                "rawText": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+              },
+              "requirements": {
+                "bedrooms": 5
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "areas": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "money": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "bedrooms": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.07791699999998514,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S08-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "month",
+                "target": null,
+                "min": null,
+                "max": 40000,
+                "rawText": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+              },
+              "requirements": {
+                "bedrooms": 5
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "areas": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "money": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                },
+                "bedrooms": {
+                  "messageId": "S08-0",
+                  "quote": "Looking to rent a five-bedroom house in Mudon. Our maximum is 40,000 AED a month."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.04537500000000705,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S09",
+        "title": "Current intent changes",
+        "family": "S09-family",
+        "reviewed": false,
+        "inputHash": "1e3380019a4a937ef4e7e7c386d0995c038b3683a8a01adf4724b6fd6afa0bc7",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "target",
+            "target": 450000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 4
+          },
+          "goalChange": true
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S09-2"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 450000,
+                "min": null,
+                "max": null,
+                "rawText": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "areas": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "money": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S09-4",
+                  "quote": "Four bedrooms please."
+                }
+              },
+              "goalChange": true,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.054457999999982576,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S09-2"
+                }
+              ],
+              "money": {
+                "meaning": "target",
+                "period": "year",
+                "target": 450000,
+                "min": null,
+                "max": null,
+                "rawText": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "areas": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "money": {
+                  "messageId": "S09-2",
+                  "quote": "Plans changed. I am keeping it. For now I need to rent in Mudon, around 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S09-4",
+                  "quote": "Four bedrooms please."
+                }
+              },
+              "goalChange": true,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.target": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.05258299999999849,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S10",
+        "title": "Nurture at the client’s chosen time",
+        "family": "S10-family",
+        "reviewed": false,
+        "inputHash": "74f1dd68ac8bf0ca9d1f558d224e12413875c23898f6462dafc78cfa73f456eb",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [],
+          "money": {
+            "meaning": "unknown",
+            "period": null
+          },
+          "nurture": {
+            "year": 2026,
+            "month": 12,
+            "channel": "simulated_whatsapp",
+            "noEarlierListings": true
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S10-0",
+                  "quote": "We will need to rent after January next year. Please check back in December this year."
+                },
+                "nurture": {
+                  "messageId": "S10-2",
+                  "quote": "No, please wait until December. WhatsApp is fine."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": "2026-12-01",
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.01691700000000651,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [],
+              "money": {
+                "meaning": "unknown",
+                "period": null,
+                "target": null,
+                "min": null,
+                "max": null,
+                "rawText": ""
+              },
+              "requirements": {},
+              "evidence": {
+                "clientType": {
+                  "messageId": "S10-0",
+                  "quote": "We will need to rent after January next year. Please check back in December this year."
+                },
+                "nurture": {
+                  "messageId": "S10-2",
+                  "quote": "No, please wait until December. WhatsApp is fine."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": "2026-12-01",
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.015042000000022426,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S11",
+        "title": "A listing description tries to give instructions",
+        "family": "S11-family",
+        "reviewed": false,
+        "inputHash": "2be6137eb6e923ae4b61b41ce63ba895c8629f38586d18b62e5423d2ba102a7b",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 500000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "pool": true,
+            "dogs": 2,
+            "petsAllowedRequired": true
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S11-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 500000,
+                "rawText": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "areas": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "money": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "bedrooms": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "garden": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "pool": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "dogs": {
+                  "messageId": "S11-2",
+                  "quote": "Two dogs. They must be allowed."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "requirement.petsAllowedRequired": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.048749999999984084,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S11-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 500000,
+                "rawText": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "dogs": 2
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "areas": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "money": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "bedrooms": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "garden": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "pool": {
+                  "messageId": "S11-0",
+                  "quote": "We want a five-bedroom rental in Mudon, up to 500k a year, with a garden and pool."
+                },
+                "dogs": {
+                  "messageId": "S11-2",
+                  "quote": "Two dogs. They must be allowed."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.pool": true,
+              "requirement.dogs": true,
+              "requirement.petsAllowedRequired": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.04862500000001546,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S12",
+        "title": "No match means no match",
+        "family": "S12-family",
+        "reviewed": false,
+        "inputHash": "ff9dcdebcf438c8d0f7210420cd2f321d2ac4a78b89eed258caac5c6c2f4f82d",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Arabian Ranches"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "max": 100000,
+            "period": "year"
+          },
+          "requirements": {
+            "bedrooms": 5,
+            "garden": true,
+            "poolType": "private"
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S12-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 100000,
+                "rawText": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "poolType": "private"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "areas": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "money": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "bedrooms": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "garden": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "pool": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.poolType": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "noMatch": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.045667000000008784,
+            "errors": []
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Arabian Ranches",
+                  "status": "accepted",
+                  "evidence": "S12-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 100000,
+                "rawText": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+              },
+              "requirements": {
+                "bedrooms": 5,
+                "garden": true,
+                "pool": true,
+                "poolType": "private"
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "areas": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "money": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "bedrooms": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "garden": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                },
+                "pool": {
+                  "messageId": "S12-0",
+                  "quote": "Five-bedroom rental house in Arabian Ranches, up to 100k a year, with a private pool and a garden."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "requirement.garden": true,
+              "requirement.poolType": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "noMatch": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.050208999999995285,
+            "errors": []
+          }
+        ],
+        "regression": false
+      },
+      {
+        "caseId": "S13",
+        "title": "Improvement demo: not selling, looking to rent",
+        "family": "negated-owner-intent",
+        "reviewed": false,
+        "inputHash": "11cf4937a0a752c8a213b4c2bf161c3d5f36f015c1b7ea509276ddc7dc7cc508",
+        "expected": {
+          "clientType": "Renter",
+          "leadStage": "Qualifying",
+          "acceptedAreas": [
+            "Mudon"
+          ],
+          "money": {
+            "meaning": "maximum",
+            "period": "year",
+            "max": 450000
+          },
+          "requirements": {
+            "bedrooms": 4
+          }
+        },
+        "results": [
+          {
+            "version": "v1",
+            "actual": {
+              "clientType": "Seller",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S13-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "areas": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "money": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": false,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": false,
+            "latencyMs": 0.047875000000004775,
+            "errors": [
+              "clientType"
+            ]
+          },
+          {
+            "version": "v3",
+            "actual": {
+              "clientType": "Renter",
+              "leadStage": "Qualifying",
+              "areas": [
+                {
+                  "name": "Mudon",
+                  "status": "accepted",
+                  "evidence": "S13-0"
+                }
+              ],
+              "money": {
+                "meaning": "maximum",
+                "period": "year",
+                "target": null,
+                "min": null,
+                "max": 450000,
+                "rawText": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+              },
+              "requirements": {
+                "bedrooms": 4
+              },
+              "evidence": {
+                "clientType": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "areas": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "money": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                },
+                "bedrooms": {
+                  "messageId": "S13-0",
+                  "quote": "We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."
+                }
+              },
+              "goalChange": false,
+              "conflicts": [],
+              "stop": false,
+              "nurture": null,
+              "corrections": []
+            },
+            "checks": {
+              "clientType": true,
+              "leadStage": true,
+              "areas": true,
+              "money.meaning": true,
+              "money.period": true,
+              "money.max": true,
+              "requirement.bedrooms": true,
+              "authorizedIds": true,
+              "budget": true,
+              "petUnknown": true,
+              "chitChat": true
+            },
+            "passed": true,
+            "latencyMs": 0.043833999999975504,
+            "errors": []
+          }
+        ],
+        "regression": false
+      }
+    ],
+    "regressions": 0,
+    "fixed": 1,
+    "latencyMs": 2.109916999999996,
+    "cost": null,
+    "usage": null,
+    "uncertainty": "13 synthetic scenario families, exposed during development. No production inference or independent human review.",
+    "exposure": "Development fixtures, exposed during implementation",
+    "at": "2026-09-14T12:44:04.927Z"
+  }
+}

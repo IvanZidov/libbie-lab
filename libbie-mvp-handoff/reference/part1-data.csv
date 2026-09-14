@@ -1,0 +1,51 @@
+row,human_client_type,human_lead_stage,human_locations,human_budget,pred_client_type,pred_lead_stage,pred_locations,pred_budget
+1,Renter,Viewing,Villanova|Damac Hills|Dubai Marina,120000,Renter,Qualifying,Villanova|Damac Hills|Dubai Marina,
+2,Renter,Negotiation,Remraam|City Walk,90000,Renter,Negotiation,Remraam|City Walk,90000
+3,Buyer,Viewing,Reem,4200000,Buyer,Viewing,Reem,
+4,Buyer,Qualifying,Town Square|Villanova,4200000,Buyer,Viewing,Town Square|Villanova,4200000
+5,Buyer,Qualifying,Serena|Remraam,5500000,Buyer,Qualifying,Serena|Remraam,5500000
+6,Landlord,Qualifying,Bluewaters,,Renter,Inquiry,Bluewaters,
+7,Renter,Viewing,Reem,90000,Renter,Viewing,Reem,
+8,Buyer,Qualifying,Bluewaters,3500000,Buyer,Qualifying,Bluewaters,
+9,Renter,Viewing,Al Furjan|Reem,,Renter,Viewing,Al Furjan|Reem,
+10,Buyer,Negotiation,Damac Hills,3500000,Buyer,Viewing,Damac Hills|Tilal Al Ghaf,3500000
+11,Renter,Negotiation,Dubai South|Mudon,500000,Renter,Negotiation,Dubai South|Mudon,500000
+12,Renter,Qualifying,Bluewaters|Victory Heights,90000,Renter,Qualifying,Bluewaters|Victory Heights,
+13,Buyer,Qualifying,Dubai Marina,4200000,Buyer,Qualifying,Dubai Marina,4200000
+14,Buyer,Viewing,City Walk,8000000,Buyer,Viewing,City Walk|Town Square,8000000
+15,Seller,Qualifying,The Villa|Business Bay|JVC,1500000,Seller,Inquiry,The Villa|Business Bay|JVC,1500000
+16,Seller,Viewing,The Villa|Serena,8000000,Buyer,Viewing,The Villa|Serena,8000000
+17,Buyer,Viewing,Mira Oasis,11000000,Buyer,Viewing,Mira Oasis|Arabian Ranches,11000000
+18,Renter,Viewing,Jumeirah Park|Town Square|Dubai Marina,120000,Renter,Qualifying,Jumeirah Park|Town Square|Dubai Marina|Dubai South,120000
+19,Seller,Viewing,Nad Al Sheba,8000000,Buyer,Viewing,Nad Al Sheba,
+20,Buyer,Qualifying,Tilal Al Ghaf,2200000,Buyer,Qualifying,Tilal Al Ghaf,2200000
+21,Landlord,Viewing,Bluewaters,120000,Renter,Viewing,Bluewaters,120000
+22,Buyer,Negotiation,Mudon,2200000,Buyer,Viewing,Mudon,2200000
+23,Renter,Qualifying,Business Bay,,Renter,Inquiry,Business Bay,
+24,Landlord,Viewing,Town Square,120000,Landlord,Viewing,Town Square,120000
+25,Seller,Negotiation,Nad Al Sheba|Reem,,Seller,Negotiation,Nad Al Sheba|Reem,
+26,Renter,Qualifying,Damac Hills|Bluewaters,500000,Renter,Qualifying,Damac Hills|Bluewaters,500000
+27,Renter,Qualifying,Dubai Marina,90000,Renter,Inquiry,Dubai Marina,90000
+28,Renter,Qualifying,Dubai Marina,90000,Renter,Qualifying,Dubai Marina,90000
+29,Renter,Qualifying,Arabian Ranches|Mudon,250000,Renter,Qualifying,Arabian Ranches|Mudon,250000
+30,Seller,Viewing,Nad Al Sheba|Villanova,5500000,Seller,Viewing,Nad Al Sheba|Villanova|Dubai Marina,5500000
+31,Landlord,Qualifying,Town Square,90000,Landlord,Qualifying,Town Square,90000
+32,Seller,Qualifying,City Walk,3500000,Buyer,Inquiry,City Walk,3500000
+33,Renter,Viewing,Bluewaters,,Renter,Viewing,Bluewaters,
+34,Landlord,Qualifying,Dubai South|Damac Hills|Business Bay,90000,Landlord,Qualifying,Dubai South|Damac Hills|Business Bay,90000
+35,Buyer,Qualifying,Dubai Marina,2200000,Buyer,Qualifying,Dubai Marina|Tilal Al Ghaf,2200000
+36,Landlord,Viewing,City Walk|JVC,90000,Landlord,Viewing,City Walk|JVC|Arabian Ranches,90000
+37,Landlord,Viewing,Mudon|Town Square,,Landlord,Viewing,Mudon|Town Square,
+38,Buyer,Viewing,Arabian Ranches,11000000,Buyer,Negotiation,Arabian Ranches,
+39,Renter,Negotiation,Bluewaters,500000,Renter,Negotiation,Bluewaters,500000
+40,Seller,Inquiry,Dubai South,1500000,Buyer,Inquiry,Dubai South,1500000
+41,Buyer,Qualifying,Victory Heights,2200000,Buyer,Qualifying,Victory Heights,2200000
+42,Renter,Qualifying,Reem,,Renter,Qualifying,Reem,
+43,Buyer,Qualifying,Dubai Marina|Town Square,,Buyer,Viewing,Dubai Marina|Town Square,
+44,Buyer,Viewing,Jumeirah Park,1500000,Buyer,Viewing,Jumeirah Park,1500000
+45,Buyer,Negotiation,Serena|Arabian Ranches,11000000,Buyer,Negotiation,Serena|Arabian Ranches,11000000
+46,Buyer,Qualifying,Al Furjan|Serena,8000000,Buyer,Qualifying,Al Furjan|Serena,8000000
+47,Buyer,Inquiry,Victory Heights,4200000,Buyer,Inquiry,Victory Heights,4200000
+48,Buyer,Qualifying,Dubai Marina|JVC|The Villa,3500000,Buyer,Qualifying,Dubai Marina|JVC|The Villa,3500000
+49,Buyer,Qualifying,City Walk|Dubai Marina|Al Furjan,5500000,Buyer,Qualifying,City Walk|Dubai Marina|Al Furjan,5500000
+50,Seller,Inquiry,Business Bay|Bluewaters,2200000,Buyer,Inquiry,Business Bay|Bluewaters,2200000

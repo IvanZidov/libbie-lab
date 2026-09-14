@@ -1,0 +1,15 @@
+{
+  "source": "User-supplied part1-data.csv",
+  "sha256": "d75f6f8d031d4fb9b074c1983928f63235e4cd8eef6ebecc7120e95482c516da",
+  "rows": 50,
+  "fieldMatches": {
+    "client_type": 43,
+    "lead_stage": 38,
+    "locations": 43,
+    "budget": 43
+  },
+  "totalFieldMatches": 167,
+  "totalFields": 200,
+  "wholeConversationMatches": 24,
+  "warning": "Agreement with imperfect supplied references, not independently verified accuracy. No new prompt predictions supplied."
+}

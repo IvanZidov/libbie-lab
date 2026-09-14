@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+<symbol id="underline" viewBox="0 0 310 27"><path pathLength="1" d="M4 12C57 3 176 3 305 10M12 21C107 12 223 13 291 18"/></symbol>
+<symbol id="loop" viewBox="0 0 190 87"><path pathLength="1" d="M167 17C125-1 33 2 10 30C-17 69 79 87 145 72C207 58 190 15 120 8C65 2 18 13 13 36"/></symbol>
+<symbol id="arrow" viewBox="0 0 100 100"><path pathLength="1" d="M9 8C77-3 98 33 54 56C23 73 24 30 51 44C69 53 68 76 80 89M61 81L81 90L89 69"/></symbol>
+<symbol id="spark" viewBox="0 0 72 72"><path pathLength="1" d="M34 4L37 68M5 30L68 40M13 10L59 61M59 9L15 60"/></symbol>
+<symbol id="wave" viewBox="0 0 230 45"><path pathLength="1" d="M3 28C28 4 41 43 64 23S92 8 109 26S142 40 159 19S191 8 205 25S219 30 227 17"/></symbol>
+</defs>
+</svg>

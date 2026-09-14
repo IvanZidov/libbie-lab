@@ -1,0 +1,17 @@
+{
+  "id": "S13",
+  "familyId": "negated-owner-intent",
+  "origin": "synthetic",
+  "split": "development",
+  "validation": "unreviewed",
+  "title": "Improvement demo: not selling, looking to rent",
+  "virtualStart": "2026-07-01T09:00:00+04:00",
+  "publicOpening": [{"sender":"client","text":"We are not selling. We need to rent a four-bedroom house in Mudon, up to 450k a year."}],
+  "privatePersona": {"stableFacts":{},"disclosureRules":["Only public facts are available."],"responseRules":["Do not change intent or budget."]},
+  "scriptedReplies": [{"trigger":"ask_budget","text":"The limit is still 450k a year."}],
+  "evaluatorOnly": {
+    "expectedAtOpening":{"clientType":"Renter","leadStage":"Qualifying","acceptedAreas":["Mudon"],"money":{"meaning":"maximum","period":"year","max":450000},"requirements":{"bedrooms":4}},
+    "invariants":["Negated selling is not an active seller intent. This is an implementation-exposed development case, not a holdout."],
+    "targetOutcome":"Route the contact to rental search instead of seller valuation support."
+  }
+}
