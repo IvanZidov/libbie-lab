@@ -14,7 +14,7 @@ Next.js App Router + React + TypeScript + Zod, using Node 24's built-in SQLite d
 
 The local prototype exposes one validated command endpoint:
 
-- `GET /api/action?view=Workspace|Properties|Scenario%20Lab|Review|Evaluation|Settings` returns public state. Frozen labels/reports are only included for the corresponding operator review/evaluation view. Private simulator persona and scripted future text are excluded.
+- `GET /api/action?view=Workspace|Improve|Settings` returns public state. Frozen labels, opening proposals and stored reports are only included for the `Improve` view. Private simulator persona and scripted future text are excluded.
 - `POST /api/action` accepts `{action, key, leadId?, expectedRevision?, data}` and returns `{ok:true,data}` or `{ok:false,error}`. Revision conflicts return HTTP 409. Same-origin browser mutation checks reject cross-origin posts.
 - Supported actions: message, saveDraft, draft, brief, search, correct, feedback, start, pause, reset, clock, step, batch, retry, generate, review, evaluate, promote, rollback, enrich, propertyUpdate.
 

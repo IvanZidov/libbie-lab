@@ -13,6 +13,7 @@ Built with **Next.js · React · TypeScript · Motion · Radix UI · Lucide · S
 | What you need | Where to go |
 | --- | --- |
 | See the product | [Screenshot tour](docs/screenshots/README.md) |
+| Show a client the improvement loop | [Twelve-minute demo script](docs/CLIENT-DEMO-SCRIPT.md) |
 | Run the full demonstration | [Step-by-step tutorial](docs/DEMO-TUTORIAL.md) |
 | Read the case-study answer | [Four-section memo](docs/case-study-memo.md) |
 | Check scope and limitations | [Case-study coverage](docs/case-study-coverage.md) |
@@ -64,18 +65,29 @@ npm start                # serve the production build on loopback
 
 The dependency lockfile is included. The supplied benchmark CSV, fictional fixtures, fonts and licenses are included. SQLite lives at `data/libbie.db`. Back up the whole data directory while the app is stopped. Restarting never reseeds over existing conversations. `LIBBIE_DB` can choose another database file. Its parent directory must exist.
 
+## Three screens
+
+**Workspace** is the broker's day: conversations, the lead brief with its source
+quotes, broker-approved search, the shortlist, corrections, and the fictional
+inventory. The simulated client replies from the composer itself.
+
+**Improve** is one numbered run from a mistake to a released fix: see the failure,
+correct it, compare a candidate against every saved case, sign off the answers as a
+person, release, and roll back. Each step marks itself done as you go.
+
+**Settings** is runtime configuration, model usage and the version registry.
+
 ## Five-minute demo
 
 1. **Workspace** opens the family lead. Read the source quotes: 5 bedrooms, garden, pool, 2 dogs, around AED 500k/year, before mid-August. Arabian Ranches is unconfirmed. The fictional recreation supplies the year 2026.
 2. **Ask Libbie → Review search**. Enter `Arabian Ranches` as a broker-approved working area, keep AED 500,000/year, check the approval box, and **Run search**. SYN-P001 is conditional: style uncertain, pets and availability unverified. SYN-P004 is a separate factual match. All cards come from canonical inventory records.
-3. **Draft reply**, edit it to ask whether Mudon works, and **Send to simulated client**. Use **Save draft** to preserve unfinished drafts. These messages are local events only.
-4. In **Scenario Lab**, **Start / resume**, choose `confirm_area`, and **Next client reply**. Mudon becomes accepted and Arabian Ranches rejected. Ask about the budget in Workspace, then use `ask_budget` to disclose the AED 520k maximum. Revisit Workspace and run a fresh approved search. Stale briefs are rejected.
-5. Ask for Saturday at 10:00, then use `ask_viewing_time`. The stage advances to Viewing. **Correct** lets you fix a field with a source message and reason. The override persists through later messages and creates a development feedback case.
-6. **Review** separates source evidence, machine proposals and saved human references. Use blind mode before forming an independent answer. Review all 12 frozen openings to make a demo report eligible. Do not accept values without reviewing evidence. Ambiguous/adjudication cases do not count as accepted.
-7. **Evaluation → Run comparison** freezes the actual transcript/reference and inventory hashes for v1 and v2. The supplied unreviewed fixtures correctly produce **Insufficient evidence**, even when all scripted assertions pass. After genuine review, a passing exact-source report enables explicit promotion. **Rollback previous promotion** restores the prior pointer and keeps the audit trail.
-8. Restart and confirm the conversation, correction, review, comparison and version history remain.
+3. **Draft reply**, edit it to ask whether Mudon works, and **Send to simulated client**. Under the composer, choose `confirm area` and **Client replies**. Mudon becomes accepted and Arabian Ranches rejected. Ask about the budget, use `ask budget` to disclose the AED 520k maximum, then run a fresh approved search. Stale briefs are rejected.
+4. Ask for Saturday at 10:00, then use `ask viewing time`. The stage advances to Viewing. **Correct** on the lead brief lets you fix a field with a source message and reason. The override persists through later messages and saves the case to test against.
+5. **Improve** runs the whole improvement loop in five numbered steps. Step 3's comparison on the supplied unreviewed fixtures correctly reports **Needs human sign-off**, even when every scripted assertion passes. Step 4 is the sign-off queue; cases where the two versions disagree carry an amber dot. Do not wave those through — signing off a wrong answer blocks the release rather than hiding the problem.
+6. After genuine sign-off, step 5 enables release, records who decided and on what evidence, and **Undo the last release** restores the previous pointer while keeping the audit trail.
+7. Restart and confirm the conversation, correction, sign-off, comparison and version history remain.
 
-The 5-minute path demonstrates the mechanics, not enough time for independent review of every reference. The automated test suite exercises promotion and rollback using an explicitly named test actor in a temporary database; it does not fabricate human validation in your workspace.
+The five-minute path demonstrates the mechanics, not enough time for independent review of every reference. The automated test suite exercises promotion and rollback using an explicitly named test actor in a temporary database; it does not fabricate human validation in your workspace. [docs/CLIENT-DEMO-SCRIPT.md](docs/CLIENT-DEMO-SCRIPT.md) is the version to present to a client.
 
 ## Optional live provider
 
@@ -89,7 +101,7 @@ Live calls run as persisted jobs outside database transactions. The page polls w
 
 ## Explore the approach
 
-Read the [case-study memo](docs/case-study-memo.md) for the proposed evaluation and improvement programme, then follow the [client walkthrough](docs/DEMO-TUTORIAL.md). `npm run demo:report` reproduces the synthetic before/after comparison without changing your workspace.
+Read the [case-study memo](docs/case-study-memo.md) for the proposed evaluation and improvement programme, then follow the [client walkthrough](docs/DEMO-TUTORIAL.md) or present the [demo script](docs/CLIENT-DEMO-SCRIPT.md). `npm run demo:report` reproduces the synthetic before/after comparison without changing your workspace.
 
 ## Repository checks
 

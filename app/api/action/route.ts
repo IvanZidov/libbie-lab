@@ -1,4 +1,5 @@
 import { after } from "next/server";
+import { ZodError } from "zod";
 import { enqueue, work } from "../../../src/jobs";
 import { act, state } from "../../../src/service";
 export const runtime = "nodejs";
@@ -27,7 +28,14 @@ export async function POST(req: Request) {
     after(work);
     return Response.json({ ok: true, data: result });
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Request failed";
+    // A ZodError's own message is a JSON dump of its issues. Brokers should not
+    // be shown that, so surface the first issue as the sentence it carries.
+    const message =
+      e instanceof ZodError
+        ? e.issues[0]?.message || "That request was not valid."
+        : e instanceof Error
+          ? e.message
+          : "Request failed";
     return Response.json(
       { ok: false, error: message },
       { status: message.includes("conflict") ? 409 : 400 },

@@ -13,6 +13,7 @@ import {
   X,
   ChevronRight,
   MessageCircle,
+  GraduationCap,
 } from "lucide-react";
 import {
   BrandMark,
@@ -20,22 +21,16 @@ import {
   Requirement,
   Transcript,
   PropertyDrawing,
+  Json,
+  download,
   leadTitles,
 } from "./components/interface";
 import { PropertyDrawer } from "./components/drawer";
+import { Improve } from "./components/improve";
+import { Tutorial, hasSeenTour } from "./components/tutorial";
 import { nextAction, legacy } from "../src/domain";
-const nav = [
-  "Workspace",
-  "Properties",
-  "Scenario Lab",
-  "Review",
-  "Evaluation",
-  "Settings",
-];
+const nav = ["Workspace", "Improve", "Settings"];
 const money = (n: number) => new Intl.NumberFormat("en-AE").format(n);
-function Json({ value }: { value: any }) {
-  return <pre>{JSON.stringify(value, null, 2)}</pre>;
-}
 export default function App() {
   const propertyTriggerRef = useRef<HTMLButtonElement>(null);
   const transcriptRef = useRef<HTMLDivElement>(null);
@@ -62,23 +57,18 @@ export default function App() {
     [value, setValue] = useState('"Qualifying"'),
     [reason, setReason] = useState(""),
     [evidence, setEvidence] = useState(""),
-    [blind, setBlind] = useState(false),
-    [reviewText, setReviewText] = useState(""),
-    [reviewer, setReviewer] = useState("Local broker"),
-    [scenarioId, setScenarioId] = useState("S01"),
-    [reportId, setReportId] = useState(""),
     [propId, setPropId] = useState(""),
     [traits, setTraits] = useState<any>(null),
     [clock, setClock] = useState("2026-12-01T09:00"),
     [sort, setSort] = useState("activity"),
-    [variationTitle, setVariationTitle] = useState(""),
-    [variationText, setVariationText] = useState(""),
     [petUpdate, setPetUpdate] = useState("unknown"),
     [availableUpdate, setAvailableUpdate] = useState(""),
     [descriptionUpdate, setDescriptionUpdate] = useState(""),
     [propertyReason, setPropertyReason] = useState(""),
-    [baseline, setBaseline] = useState("v1"),
-    [candidate, setCandidate] = useState("v2");
+    [tour, setTour] = useState(false);
+  useEffect(() => {
+    if (!hasSeenTour()) setTour(true);
+  }, []);
   const refresh = async () => {
     const r = await fetch("/api/action?view=" + encodeURIComponent(page)).then(
       (r) => r.json(),
@@ -149,7 +139,6 @@ export default function App() {
       if (action === "draft" && !r.data.jobId)
         setDraft(fresh.leads.find((l: any) => l.id === selected.id).draft);
       if (r.data.traits) setTraits(r.data.traits);
-      if (r.data.reportId) setReportId(r.data.reportId);
       return true;
     } catch (e: any) {
       setError(e.message);
@@ -169,11 +158,6 @@ export default function App() {
       </main>
     );
   const s = lead.snapshot,
-    scenario =
-      data.scenarios.find((s: any) => s.id === scenarioId) || data.scenarios[0],
-    report =
-      data.evaluations.find((r: any) => r.id === reportId) ||
-      data.evaluations.at(-1),
     property = data.properties.find((p: any) => p.id === propId),
     activeScenario = data.scenarios.find((s: any) => s.id === lead.scenarioId);
   const switchLead = (l: any) => {
@@ -181,6 +165,10 @@ export default function App() {
     setLeadId(l.id);
     setCorrection(false);
   };
+  const areaList = area
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
   const brief = (
     <>
       <div className="section-head">
@@ -237,15 +225,34 @@ export default function App() {
         />
         I approve these working assumptions for this search.
       </label>
+      {!areaList.length && (
+        <p className="hint">
+          A search needs at least one working area you approve. The conversation
+          has not confirmed one yet
+          {lead.brief?.proposedAreas.length
+            ? " — Libbie suggests " + lead.brief.proposedAreas.join(" or ")
+            : ""}
+          .
+          {lead.brief?.proposedAreas.map((a: string) => (
+            <button
+              className="quiet"
+              key={a}
+              onClick={() => {
+                setArea(a);
+                setApproved(false);
+              }}
+            >
+              Use {a}
+            </button>
+          ))}
+        </p>
+      )}
       <button
-        disabled={busy || !approved}
+        disabled={busy || !approved || !areaList.length}
         onClick={() =>
           action("search", {
             cap,
-            areas: area
-              .split(",")
-              .map((x) => x.trim())
-              .filter(Boolean),
+            areas: areaList,
             style,
             unknownPolicy: policy,
             approved,
@@ -385,7 +392,7 @@ export default function App() {
                 )}
                 <NavIcon index={i} />
                 <span className="nav-label">{n}</span>
-                {n === "Review" && (
+                {n === "Improve" && (
                   <i>
                     {
                       data.feedback.filter((f: any) => f.status === "pending")
@@ -403,8 +410,8 @@ export default function App() {
             <p>
               Try a conversation. Inspect a decision. Learn from the difference.
             </p>
-            <button onClick={() => setPage("Scenario Lab")}>
-              Open the lab <ArrowUpRight size={15} />
+            <button onClick={() => setPage("Improve")}>
+              Open the improvement run <ArrowUpRight size={15} />
             </button>
           </div>
           <div className="sidebar-foot">
@@ -429,6 +436,9 @@ export default function App() {
                 <span className="status-dot" />
                 System {data.workspace.active}
               </span>
+              <button className="quiet tour-open" onClick={() => setTour(true)}>
+                <GraduationCap size={14} /> How this works
+              </button>
               <div className="tag simulation">
                 <FlaskConical size={13} /> Simulation{" "}
                 <span>
@@ -465,20 +475,16 @@ export default function App() {
                   <h1>
                     {page === "Workspace"
                       ? "A little context. A better next step."
-                      : page}
+                      : page === "Improve"
+                        ? "Teach it once. Prove it. Then release it."
+                        : page}
                   </h1>
                   <p>
                     {page === "Workspace"
                       ? "Your conversations, requirements and next moves. All in one place."
-                      : page === "Properties"
-                        ? "Fictional inventory, with facts and unknowns kept in view."
-                        : page === "Scenario Lab"
-                          ? "A safe place to try a conversation and inspect what changes."
-                          : page === "Review"
-                            ? "Your judgement becomes a reference. Every correction keeps its evidence."
-                            : page === "Evaluation"
-                              ? "Compare actual runs. Inspect regressions before changing a version."
-                              : "Local runtime, transparent limits, and no real client outreach."}
+                      : page === "Improve"
+                        ? "Five steps from a mistake to a released, reversible fix."
+                        : "Local runtime, transparent limits, and no real client outreach."}
                   </p>
                 </div>
                 <div className="page-context">
@@ -723,6 +729,108 @@ export default function App() {
                             Send to simulated client <ArrowUpRight size={15} />
                           </button>
                         </div>
+                        <div className="client-turn">
+                          <span className="mono">THEN THE CLIENT REPLIES</span>
+                          <div className="inline">
+                            <label className="sr-label" htmlFor="reply-trigger">
+                              What you asked about
+                            </label>
+                            <select
+                              id="reply-trigger"
+                              value={trigger}
+                              onChange={(e) => setTrigger(e.target.value)}
+                            >
+                              <option value="">What did you ask about?</option>
+                              {activeScenario?.triggers.map((t: string) => (
+                                <option key={t}>
+                                  {t.replaceAll("_", " ")}
+                                </option>
+                              ))}
+                            </select>
+                            <button
+                              className="secondary"
+                              disabled={busy}
+                              onClick={() =>
+                                action("step", {
+                                  trigger: trigger.replaceAll(" ", "_"),
+                                })
+                              }
+                            >
+                              Client replies <ArrowRight size={15} />
+                            </button>
+                          </div>
+                          <small>
+                            {lead.status} · turn {lead.turns} of{" "}
+                            {data.settings.maxTurns} · this simulated client
+                            only answers the topics listed above
+                          </small>
+                          <details>
+                            <summary>Run controls</summary>
+                            <div className="actions">
+                              <button
+                                className="quiet"
+                                disabled={busy}
+                                onClick={() => action("start")}
+                              >
+                                Start / resume
+                              </button>
+                              <button
+                                className="quiet"
+                                disabled={busy}
+                                onClick={() => action("pause")}
+                              >
+                                Pause
+                              </button>
+                              <button
+                                className="quiet"
+                                disabled={busy}
+                                onClick={() => action("batch", { limit: 4 })}
+                              >
+                                Run up to 4 turns
+                              </button>
+                            </div>
+                            <label>
+                              Move the simulated clock
+                              <input
+                                type="datetime-local"
+                                value={clock}
+                                onChange={(e) => setClock(e.target.value)}
+                              />
+                            </label>
+                            <button
+                              className="quiet"
+                              onClick={() =>
+                                action("clock", {
+                                  clock: new Date(clock).toISOString(),
+                                })
+                              }
+                            >
+                              Apply the new time
+                            </button>
+                            {data.jobs
+                              .filter((j: any) => j.leadId === lead.id)
+                              .map((j: any) => (
+                                <div className="result" key={j.id}>
+                                  <span className="tag">
+                                    {j.type} · {j.status} · {j.progress}%
+                                  </span>
+                                  {j.error && (
+                                    <p className="warning">{j.error}</p>
+                                  )}
+                                  {j.status === "failed" && (
+                                    <button
+                                      className="quiet"
+                                      onClick={() =>
+                                        action("retry", { jobId: j.id })
+                                      }
+                                    >
+                                      Retry
+                                    </button>
+                                  )}
+                                </div>
+                              ))}
+                          </details>
+                        </div>
                       </div>
                     </section>
                     <aside id="lead-summary" className="brief-column">
@@ -938,798 +1046,233 @@ export default function App() {
                       </div>
                     </section>
                   )}
-                </>
-              )}
-              {page === "Properties" && (
-                <>
-                  <div className="inventory-note">
-                    <span className="tag">13 workspace records</span>
-                    <p>
-                      14 seeded records include 1 separate-workspace exclusion
-                      fixture. No property photographs are supplied.
-                    </p>
-                  </div>
-                  <div className="property-grid">
-                    {data.properties.map((p: any) => (
-                      <button
-                        className="card property"
-                        key={p.id}
-                        onClick={(event) => {
-                          propertyTriggerRef.current = event.currentTarget;
-                          setPropId(p.id);
-                          setTraits(null);
-                          setPetUpdate(
-                            p.petsAllowed === null
-                              ? "unknown"
-                              : String(p.petsAllowed),
-                          );
-                          setAvailableUpdate(p.availableFrom || "");
-                          setDescriptionUpdate(p.description);
-                        }}
-                      >
-                        <PropertyDrawing
-                          index={Number(p.id.replace(/\D/g, ""))}
-                        />
-                        <div className="section-head">
-                          <span className="mono">{p.id}</span>
-                          <span className="tag">{p.status}</span>
-                        </div>
-                        <h3>{p.location}</h3>
-                        <h2>
-                          AED {money(p.price.amount)}
-                          <small> / {p.price.period}</small>
-                        </h2>
-                        <p>
-                          {p.bedrooms} beds · {p.poolType || "No"} pool · Garden{" "}
-                          {p.garden ? "yes" : "no"}
-                        </p>
-                        <span className="micro">
-                          Fictional listing · updated {p.updatedAt.slice(0, 10)}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                  <PropertyDrawer
-                    open={!!property}
-                    onClose={() => setPropId("")}
-                    returnFocus={propertyTriggerRef}
-                  >
-                    {property && (
-                      <section className="card">
-                        <h2>
-                          {property.id} · {property.location}
-                        </h2>
-                        <p>{property.description}</p>
-                        <div className="property-facts">
-                          <div>
-                            <span>Price</span>
-                            <strong>
-                              AED {money(property.price.amount)}
-                              <small>per {property.price.period}</small>
-                            </strong>
-                          </div>
-                          <div>
-                            <span>Bedrooms</span>
-                            <strong>{property.bedrooms}</strong>
-                          </div>
-                          <div>
-                            <span>Pool</span>
-                            <strong>{property.poolType || "None"}</strong>
-                          </div>
-                          <div>
-                            <span>Garden</span>
-                            <strong>{property.garden ? "Yes" : "No"}</strong>
-                          </div>
-                          <div>
-                            <span>Pets</span>
-                            <strong>
-                              {property.petsAllowed === null
-                                ? "Unverified"
-                                : property.petsAllowed
-                                  ? "Allowed"
-                                  : "Not allowed"}
-                            </strong>
-                          </div>
-                          <div>
-                            <span>Available from</span>
-                            <strong>
-                              {property.availableFrom || "Unverified"}
-                            </strong>
-                          </div>
-                        </div>
-                        <details>
-                          <summary>Inspect canonical record</summary>
-                          <Json value={property} />
-                        </details>
-                        <h4>Broker-verified updates</h4>
-                        {property.verifiedUpdate && (
-                          <p>
-                            {property.verifiedUpdate.reason} ·{" "}
-                            {property.verifiedUpdate.at}
-                          </p>
-                        )}
-                        <details>
-                          <summary>Record a verified update</summary>
-                          <label>
-                            Pet permission
-                            <select
-                              value={petUpdate}
-                              onChange={(e) => setPetUpdate(e.target.value)}
-                            >
-                              <option value="unknown">Unknown</option>
-                              <option value="true">Allowed</option>
-                              <option value="false">Not allowed</option>
-                            </select>
-                          </label>
-                          <label>
-                            Available from
-                            <input
-                              type="date"
-                              value={availableUpdate}
-                              onChange={(e) =>
-                                setAvailableUpdate(e.target.value)
-                              }
-                            />
-                          </label>
-                          <label>
-                            Description
-                            <textarea
-                              value={descriptionUpdate}
-                              onChange={(e) =>
-                                setDescriptionUpdate(e.target.value)
-                              }
-                            />
-                          </label>
-                          <label>
-                            Verification source / reason
-                            <input
-                              value={propertyReason}
-                              onChange={(e) =>
-                                setPropertyReason(e.target.value)
-                              }
-                            />
-                          </label>
-                          <button
-                            disabled={busy}
-                            onClick={() =>
-                              action("propertyUpdate", {
-                                propertyId: property.id,
-                                petsAllowed:
-                                  petUpdate === "unknown"
-                                    ? null
-                                    : petUpdate === "true",
-                                availableFrom: availableUpdate || null,
-                                description: descriptionUpdate,
-                                reason: propertyReason,
-                              })
-                            }
-                          >
-                            Save broker update
-                          </button>
-                        </details>
-                        <h4>Unknowns</h4>
-                        <p>
-                          {property.petsAllowed === null
-                            ? "Pet permission unverified. "
-                            : ""}
-                          {!property.availableFrom
-                            ? "Availability unverified. "
-                            : ""}
-                          Walking distance and measured quietness are
-                          unverified.
-                        </p>
+                  <details className="card inventory">
+                    <summary>
+                      Inventory · {data.properties.length} fictional records,
+                      facts and unknowns kept apart
+                    </summary>
+                    <div className="inventory-note">
+                      <span className="tag">13 workspace records</span>
+                      <p>
+                        14 seeded records include 1 separate-workspace exclusion
+                        fixture. No property photographs are supplied.
+                      </p>
+                    </div>
+                    <div className="property-grid">
+                      {data.properties.map((p: any) => (
                         <button
-                          disabled={busy}
-                          onClick={() =>
-                            action("enrich", { propertyId: property.id })
-                          }
-                        >
-                          Re-enrich
-                        </button>
-                        {traits && <Json value={traits} />}
-                        <details>
-                          <summary>Attribute version history</summary>
-                          <Json
-                            value={data.attributes.filter(
-                              (a: any) => a.propertyId === property.id,
-                            )}
-                          />
-                        </details>
-                        <details>
-                          <summary>Enrichment walkthrough illustration</summary>
-                          <img
-                            className="concept"
-                            src="/branding/villa-concept.png"
-                            alt="Concept illustration of a villa, not a seeded property"
-                          />
-                          <p>
-                            Concept illustration only. Not a photo of this
-                            property.
-                          </p>
-                        </details>
-                      </section>
-                    )}
-                  </PropertyDrawer>
-                </>
-              )}
-              {page === "Scenario Lab" && (
-                <div className="two-col">
-                  <section className="card">
-                    <h3>Scenario controls</h3>
-                    <button
-                      className="secondary"
-                      disabled={busy}
-                      onClick={() => action("loadImprovement")}
-                    >
-                      Load improvement case
-                    </button>
-                    <p className="tag">Scripted client · explicit triggers</p>
-                    <label>
-                      Scenario
-                      <select
-                        value={scenarioId}
-                        onChange={(e) => setScenarioId(e.target.value)}
-                      >
-                        {data.scenarios.map((s: any) => (
-                          <option key={s.id} value={s.id}>
-                            {s.id} · {s.title}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <p>
-                      {scenario.validation} · {scenario.split} · family{" "}
-                      {scenario.familyId}
-                    </p>
-                    <div className="actions">
-                      <button onClick={() => action("reset", { scenarioId })}>
-                        Reset as new run
-                      </button>
-                      <button
-                        className="secondary"
-                        onClick={() => action("generate", { scenarioId })}
-                      >
-                        Generate variation
-                      </button>
-                    </div>
-                    <details>
-                      <summary>Create scenario in this family</summary>
-                      <label>
-                        Scenario title
-                        <input
-                          value={variationTitle}
-                          onChange={(e) => setVariationTitle(e.target.value)}
-                        />
-                      </label>
-                      <label>
-                        Additional public client message
-                        <textarea
-                          value={variationText}
-                          onChange={(e) => setVariationText(e.target.value)}
-                        />
-                      </label>
-                      <button
-                        onClick={() =>
-                          action("generate", {
-                            scenarioId,
-                            title: variationTitle,
-                            text: variationText,
-                          })
-                        }
-                      >
-                        Create scenario
-                      </button>
-                    </details>
-                    <h4>Active run: {lead.title}</h4>
-                    <p>
-                      {lead.status} · {lead.turns}/{data.settings.maxTurns}{" "}
-                      turns · revision {lead.revision}
-                    </p>
-                    <div className="actions">
-                      <button disabled={busy} onClick={() => action("start")}>
-                        Start / resume
-                      </button>
-                      <button
-                        className="secondary"
-                        disabled={busy}
-                        onClick={() => action("pause")}
-                      >
-                        Pause
-                      </button>
-                    </div>
-                    <label>
-                      Reply trigger
-                      <select
-                        value={trigger}
-                        onChange={(e) => setTrigger(e.target.value)}
-                      >
-                        <option value="">Choose a disclosed trigger</option>
-                        {activeScenario?.triggers.map((t: string) => (
-                          <option key={t}>{t}</option>
-                        ))}
-                      </select>
-                    </label>
-                    <button
-                      disabled={busy}
-                      onClick={() => action("step", { trigger })}
-                    >
-                      Next client reply
-                    </button>
-                    <div className="actions">
-                      <button
-                        className="secondary"
-                        disabled={busy}
-                        onClick={() => action("batch", { limit: 4 })}
-                      >
-                        Run up to 4 turns
-                      </button>
-                    </div>
-                    <p>
-                      Automatic mode uses a fixed broker-question policy and
-                      sends only within this simulation. Pause is checked before
-                      each turn.
-                    </p>
-                    <p>
-                      Choose the trigger corresponding to your broker question.
-                      Arbitrary language is not understood by scripted mode.
-                    </p>
-                    <label>
-                      Advance simulated time
-                      <input
-                        type="datetime-local"
-                        value={clock}
-                        onChange={(e) => setClock(e.target.value)}
-                      />
-                    </label>
-                    <button
-                      className="secondary"
-                      onClick={() =>
-                        action("clock", {
-                          clock: new Date(clock).toISOString(),
-                        })
-                      }
-                    >
-                      Advance simulated time
-                    </button>
-                  </section>
-                  <section className="card">
-                    <h3>Run jobs</h3>
-                    {data.jobs
-                      .filter((j: any) => j.leadId === lead.id)
-                      .map((j: any) => (
-                        <div className="result" key={j.id}>
-                          <span className="tag">
-                            {j.type} · {j.status} · {j.progress}%
-                          </span>
-                          {j.error && <p className="warning">{j.error}</p>}
-                          {j.status === "failed" && (
-                            <button
-                              className="secondary"
-                              onClick={() => action("retry", { jobId: j.id })}
-                            >
-                              Retry
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                    <h3>Public run transcript</h3>
-                    {lead.messages.map((m: any) => (
-                      <blockquote key={m.id}>
-                        <b>{m.sender}</b>
-                        <p>{m.text}</p>
-                      </blockquote>
-                    ))}
-                    <button
-                      className="secondary"
-                      onClick={() => setPage("Workspace")}
-                    >
-                      Open conversation and composer →
-                    </button>
-                    <details>
-                      <summary>Run log</summary>
-                      <Json
-                        value={{
-                          id: lead.id,
-                          revision: lead.revision,
-                          status: lead.status,
-                          clock: lead.clock,
-                          usedTriggers: lead.usedTriggers,
-                        }}
-                      />
-                    </details>
-                  </section>
-                </div>
-              )}
-              {page === "Review" && (
-                <>
-                  <div className="two-col">
-                    <section className="card">
-                      <h3>Review a frozen opening</h3>
-                      <label>
-                        Scenario
-                        <select
-                          value={scenarioId}
-                          onChange={(e) => {
-                            setScenarioId(e.target.value);
-                            setReviewText("");
+                          className="card property"
+                          key={p.id}
+                          onClick={(event) => {
+                            propertyTriggerRef.current = event.currentTarget;
+                            setPropId(p.id);
+                            setTraits(null);
+                            setPetUpdate(
+                              p.petsAllowed === null
+                                ? "unknown"
+                                : String(p.petsAllowed),
+                            );
+                            setAvailableUpdate(p.availableFrom || "");
+                            setDescriptionUpdate(p.description);
                           }}
                         >
-                          {data.scenarios.map((s: any) => (
-                            <option key={s.id} value={s.id}>
-                              {s.id} · {s.title}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <label className="check">
-                        <input
-                          type="checkbox"
-                          checked={blind}
-                          onChange={(e) => {
-                            setBlind(e.target.checked);
-                            setReviewText("");
-                          }}
-                        />
-                        Blind audit · hide machine labels
-                      </label>
-                      {scenario.publicOpening.map((m: any, i: number) => (
-                        <blockquote key={i}>
-                          <b>{m.sender}</b>
-                          <p>{m.text}</p>
-                        </blockquote>
-                      ))}
-                    </section>
-                    <section className="card">
-                      <h3>Human reference</h3>
-                      <p>
-                        Submit your own labels. The original fixture remains
-                        unchanged. A reviewed opening is not independent
-                        production evidence.
-                      </p>
-                      {!blind && (
-                        <>
-                          <button
-                            className="secondary"
-                            onClick={() => {
-                              const snap = scenario.proposal;
-                              if (!snap) {
-                                setError(
-                                  "Opening proposal is loading. Try again shortly.",
-                                );
-                                return;
-                              }
-                              setReviewText(
-                                JSON.stringify(
-                                  {
-                                    clientType: snap.clientType,
-                                    leadStage: snap.leadStage,
-                                    acceptedAreas: snap.areas
-                                      .filter(
-                                        (a: any) => a.status === "accepted",
-                                      )
-                                      .map((a: any) => a.name),
-                                    money: snap.money,
-                                  },
-                                  null,
-                                  2,
-                                ),
-                              );
-                            }}
-                          >
-                            Load current extraction as proposal
-                          </button>
-                          <p>
-                            This proposal uses only the frozen opening
-                            transcript.
-                          </p>
-                        </>
-                      )}
-                      <label>
-                        Reviewer
-                        <input
-                          value={reviewer}
-                          onChange={(e) => setReviewer(e.target.value)}
-                        />
-                      </label>
-                      <ReferenceEditor
-                        value={reviewText}
-                        onChange={setReviewText}
-                      />
-                      <div className="actions">
-                        {[
-                          ["accepted", "Accept / save correction"],
-                          ["ambiguous", "Ambiguous"],
-                          ["needs_adjudication", "Needs adjudication"],
-                        ].map(([status, label]) => (
-                          <button
-                            className={status === "accepted" ? "" : "secondary"}
-                            key={status}
-                            disabled={busy}
-                            onClick={() => {
-                              try {
-                                action("review", {
-                                  scenarioId,
-                                  status,
-                                  blind,
-                                  reviewer,
-                                  value: reviewText
-                                    ? JSON.parse(reviewText)
-                                    : null,
-                                });
-                              } catch {
-                                setError("Reference must be valid JSON.");
-                              }
-                            }}
-                          >
-                            {label}
-                          </button>
-                        ))}
-                      </div>
-                      <details>
-                        <summary>
-                          Annotation history · {data.annotations.length}
-                        </summary>
-                        <Json value={data.annotations} />
-                      </details>
-                    </section>
-                  </div>
-                  <section className="card">
-                    <h3>Feedback and development cases</h3>
-                    {data.feedback.length ? (
-                      data.feedback.map((f: any) => (
-                        <div className="result" key={f.id}>
-                          <span className="tag">{f.status}</span>
-                          <h4>{f.category}</h4>
-                          <p>{f.reason}</p>
-                          <small>
-                            {f.component || "Awaiting component attribution"}
-                          </small>
-                        </div>
-                      ))
-                    ) : (
-                      <p>
-                        No feedback yet. Record a mistake or mark a shortlist
-                        useful in Workspace.
-                      </p>
-                    )}
-                  </section>
-                </>
-              )}
-              {page === "Evaluation" && (
-                <>
-                  <section className="card">
-                    <div className="section-head">
-                      <div>
-                        <h3>Frozen paired replay</h3>
-                        <p>
-                          {baseline} → {candidate} · synthetic development
-                          openings · scripted outputs
-                        </p>
-                      </div>
-                      <button
-                        disabled={busy}
-                        onClick={() =>
-                          action("evaluate", { baseline, candidate })
-                        }
-                      >
-                        {busy ? "Running comparison…" : "Run comparison"}
-                      </button>
-                    </div>
-                    <div className="form-grid">
-                      <label>
-                        Baseline
-                        <select
-                          value={baseline}
-                          onChange={(e) => setBaseline(e.target.value)}
-                        >
-                          {data.versions.map((v: any) => (
-                            <option key={v.id} value={v.id}>
-                              {v.name}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <label>
-                        Candidate
-                        <select
-                          value={candidate}
-                          onChange={(e) => setCandidate(e.target.value)}
-                        >
-                          {data.versions.map((v: any) => (
-                            <option key={v.id} value={v.id}>
-                              {v.name}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                    </div>
-                    <p>
-                      v2 adds a landlord ambiguity warning. v3 fixes explicitly
-                      negated selling. Load S13 in Scenario Lab to inspect that
-                      development failure.
-                    </p>
-                    <label>
-                      Stored report
-                      <select
-                        value={report?.id || ""}
-                        onChange={(e) => setReportId(e.target.value)}
-                      >
-                        {data.evaluations.map((r: any) => (
-                          <option key={r.id} value={r.id}>
-                            {r.at} · {r.gate}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </section>
-                  {report && (
-                    <>
-                      <div className="metrics">
-                        <section className="card">
-                          <small>RELEASE DECISION</small>
-                          <h2>{report.gate.replaceAll("_", " ")}</h2>
-                        </section>
-                        <section className="card">
-                          <small>PAIRED CASES</small>
-                          <h2>
-                            {report.total}
-                            <small> / {report.reviewed} reviewed</small>
-                          </h2>
-                        </section>
-                        <section className="card">
-                          <small>REGRESSIONS</small>
-                          <h2>{report.regressions}</h2>
-                          <small>{report.fixed ?? 0} cases fixed</small>
-                        </section>
-                        <section className="card">
-                          <small>MEASURED LATENCY</small>
-                          <h2>
-                            {report.latencyMs.toFixed(1)}
-                            <small> ms</small>
-                          </h2>
-                        </section>
-                      </div>
-                      <section className="card">
-                        <p>{report.uncertainty}</p>
-                        {report.fieldMetrics && (
-                          <div className="table-wrap">
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>Version</th>
-                                  <th>Intent agreement</th>
-                                  <th>Stage agreement</th>
-                                  <th>Area set agreement</th>
-                                  <th>Whole cases</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {report.fieldMetrics.map((m: any) => (
-                                  <tr key={m.version}>
-                                    <td>{m.version}</td>
-                                    {Object.values(m.fields).map(
-                                      (f: any, i: number) => (
-                                        <td key={i}>
-                                          {f.matched}/{f.total}
-                                        </td>
-                                      ),
-                                    )}
-                                    <td>
-                                      {m.wholeCases}/{report.total}
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                          <PropertyDrawing
+                            index={Number(p.id.replace(/\D/g, ""))}
+                          />
+                          <div className="section-head">
+                            <span className="mono">{p.id}</span>
+                            <span className="tag">{p.status}</span>
                           </div>
-                        )}
-                        <p>
-                          {report.exposure} · Cost and token usage unavailable
-                          for scripted mode.
-                        </p>
-                        <div className="table-wrap">
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Scenario</th>
-                                <th>Baseline</th>
-                                <th>Candidate</th>
-                                <th>Evidence</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {report.rows.map((r: any) => (
-                                <tr key={r.caseId}>
-                                  <td>
-                                    <b>{r.caseId}</b> {r.title}
-                                  </td>
-                                  {r.results.map((v: any) => (
-                                    <td key={v.version}>
-                                      <span
-                                        className={
-                                          "tag " +
-                                          (v.passed ? "green" : "amber")
-                                        }
-                                      >
-                                        {v.passed ? "Pass" : "Failed"}
-                                      </span>
-                                      <small>{v.errors.join(", ")}</small>
-                                    </td>
-                                  ))}
-                                  <td>
-                                    <details>
-                                      <summary>Inspect</summary>
-                                      <Json value={r} />
-                                    </details>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                        <div className="actions">
+                          <h3>{p.location}</h3>
+                          <h2>
+                            AED {money(p.price.amount)}
+                            <small> / {p.price.period}</small>
+                          </h2>
+                          <p>
+                            {p.bedrooms} beds · {p.poolType || "No"} pool ·
+                            Garden {p.garden ? "yes" : "no"}
+                          </p>
+                          <span className="micro">
+                            Fictional listing · updated{" "}
+                            {p.updatedAt.slice(0, 10)}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                    <PropertyDrawer
+                      open={!!property}
+                      onClose={() => setPropId("")}
+                      returnFocus={propertyTriggerRef}
+                    >
+                      {property && (
+                        <section className="card">
+                          <h2>
+                            {property.id} · {property.location}
+                          </h2>
+                          <p>{property.description}</p>
+                          <div className="property-facts">
+                            <div>
+                              <span>Price</span>
+                              <strong>
+                                AED {money(property.price.amount)}
+                                <small>per {property.price.period}</small>
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Bedrooms</span>
+                              <strong>{property.bedrooms}</strong>
+                            </div>
+                            <div>
+                              <span>Pool</span>
+                              <strong>{property.poolType || "None"}</strong>
+                            </div>
+                            <div>
+                              <span>Garden</span>
+                              <strong>{property.garden ? "Yes" : "No"}</strong>
+                            </div>
+                            <div>
+                              <span>Pets</span>
+                              <strong>
+                                {property.petsAllowed === null
+                                  ? "Unverified"
+                                  : property.petsAllowed
+                                    ? "Allowed"
+                                    : "Not allowed"}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Available from</span>
+                              <strong>
+                                {property.availableFrom || "Unverified"}
+                              </strong>
+                            </div>
+                          </div>
+                          <details>
+                            <summary>Inspect canonical record</summary>
+                            <Json value={property} />
+                          </details>
+                          <h4>Broker-verified updates</h4>
+                          {property.verifiedUpdate && (
+                            <p>
+                              {property.verifiedUpdate.reason} ·{" "}
+                              {property.verifiedUpdate.at}
+                            </p>
+                          )}
+                          <details>
+                            <summary>Record a verified update</summary>
+                            <label>
+                              Pet permission
+                              <select
+                                value={petUpdate}
+                                onChange={(e) => setPetUpdate(e.target.value)}
+                              >
+                                <option value="unknown">Unknown</option>
+                                <option value="true">Allowed</option>
+                                <option value="false">Not allowed</option>
+                              </select>
+                            </label>
+                            <label>
+                              Available from
+                              <input
+                                type="date"
+                                value={availableUpdate}
+                                onChange={(e) =>
+                                  setAvailableUpdate(e.target.value)
+                                }
+                              />
+                            </label>
+                            <label>
+                              Description
+                              <textarea
+                                value={descriptionUpdate}
+                                onChange={(e) =>
+                                  setDescriptionUpdate(e.target.value)
+                                }
+                              />
+                            </label>
+                            <label>
+                              Verification source / reason
+                              <input
+                                value={propertyReason}
+                                onChange={(e) =>
+                                  setPropertyReason(e.target.value)
+                                }
+                              />
+                            </label>
+                            <button
+                              disabled={busy}
+                              onClick={() =>
+                                action("propertyUpdate", {
+                                  propertyId: property.id,
+                                  petsAllowed:
+                                    petUpdate === "unknown"
+                                      ? null
+                                      : petUpdate === "true",
+                                  availableFrom: availableUpdate || null,
+                                  description: descriptionUpdate,
+                                  reason: propertyReason,
+                                })
+                              }
+                            >
+                              Save broker update
+                            </button>
+                          </details>
+                          <h4>Unknowns</h4>
+                          <p>
+                            {property.petsAllowed === null
+                              ? "Pet permission unverified. "
+                              : ""}
+                            {!property.availableFrom
+                              ? "Availability unverified. "
+                              : ""}
+                            Walking distance and measured quietness are
+                            unverified.
+                          </p>
                           <button
-                            disabled={
-                              busy || report.gate !== "passed_demo_gates"
-                            }
+                            disabled={busy}
                             onClick={() =>
-                              action("promote", {
-                                reportId: report.id,
-                                versionId: report.candidate,
-                                reason:
-                                  "Human reviewed demo report and trade-offs",
-                              })
+                              action("enrich", { propertyId: property.id })
                             }
                           >
-                            Promote candidate
+                            Re-enrich
                           </button>
-                          <button
-                            className="secondary"
-                            onClick={() => action("rollback")}
-                          >
-                            Rollback previous promotion
-                          </button>
-                          <button
-                            className="quiet"
-                            onClick={() =>
-                              download(report, "libbie-evaluation.json")
-                            }
-                          >
-                            Export report
-                          </button>
-                        </div>
-                      </section>
-                    </>
-                  )}
-                  <section className="card">
-                    <h3>Legacy benchmark · supplied labels have limitations</h3>
-                    <p>
-                      {data.legacy.totalFieldMatches}/{data.legacy.totalFields}{" "}
-                      field matches (
-                      {(
-                        (100 * data.legacy.totalFieldMatches) /
-                        data.legacy.totalFields
-                      ).toFixed(1)}
-                      %). {data.legacy.wholeConversationMatches}/
-                      {data.legacy.rows} whole-conversation matches (48%).
-                      Seller recall: 3/8. These are supplied legacy results, not
-                      results of this implementation.
-                    </p>
-                    <p>
-                      Row 19: a seller was classified as Buyer and AED 8 million
-                      omitted. Row 4: an explicit AED 4.2 million offer supports
-                      Negotiation, while both supplied stage labels need review.
-                    </p>
-                    <p>
-                      The CSV has no transcripts. No population-level or broker
-                      outcome claim follows from these 50 rows.
-                    </p>
-                    <details>
-                      <summary>Promotion history</summary>
-                      <Json value={data.promotions} />
-                    </details>
-                  </section>
+                          {traits && <Json value={traits} />}
+                          <details>
+                            <summary>Attribute version history</summary>
+                            <Json
+                              value={data.attributes.filter(
+                                (a: any) => a.propertyId === property.id,
+                              )}
+                            />
+                          </details>
+                          <details>
+                            <summary>
+                              Enrichment walkthrough illustration
+                            </summary>
+                            <img
+                              className="concept"
+                              src="/branding/villa-concept.png"
+                              alt="Concept illustration of a villa, not a seeded property"
+                            />
+                            <p>
+                              Concept illustration only. Not a photo of this
+                              property.
+                            </p>
+                          </details>
+                        </section>
+                      )}
+                    </PropertyDrawer>
+                  </details>
                 </>
+              )}
+              {page === "Improve" && (
+                <Improve
+                  data={data}
+                  action={action}
+                  busy={busy}
+                  setError={setError}
+                  setPage={setPage}
+                />
               )}
               {page === "Settings" && (
                 <div className="two-col">
@@ -1801,6 +1344,14 @@ export default function App() {
               )}
             </motion.div>
           </AnimatePresence>
+          <Tutorial
+            open={tour}
+            onClose={() => setTour(false)}
+            onFinish={() => {
+              setTour(false);
+              setPage("Improve");
+            }}
+          />
           <footer>
             Libbie Lab <span>by TextValue / Ivan Židov</span>
             <span>Synthetic development workspace · no real messages sent</span>
@@ -1817,16 +1368,6 @@ export default function App() {
       </div>
     </MotionConfig>
   );
-}
-function download(data: any, name: string) {
-  const url = URL.createObjectURL(
-    new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
-  );
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = name;
-  a.click();
-  URL.revokeObjectURL(url);
 }
 function ReferenceEditor({
   value,

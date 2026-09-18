@@ -56,7 +56,7 @@ export function state(view = "Workspace") {
       ({ privatePersona, evaluatorOnly, scriptedReplies, ...s }) => ({
         ...s,
         proposal:
-          view === "Review"
+          view === "Improve"
             ? extract(
                 s.publicOpening.map((m: any, i: number) => ({
                   ...m,
@@ -68,8 +68,8 @@ export function state(view = "Workspace") {
       }),
     ),
     feedback: all("feedback"),
-    annotations: view === "Review" ? all("annotation") : [],
-    evaluations: view === "Evaluation" ? all("evaluation") : [],
+    annotations: view === "Improve" ? all("annotation") : [],
+    evaluations: view === "Improve" ? all("evaluation") : [],
     versions: all("version"),
     promotions: all("promotion"),
     jobs: all("job").map(({ result, ...j }) => j),
@@ -207,11 +207,26 @@ export function act(raw: unknown) {
           throw Error("Search brief is stale. Ask Libbie again.");
         const edits = z
           .object({
-            cap: z.number().positive(),
-            areas: z.array(z.string()).min(1),
-            style: z.string().min(1).max(200),
+            cap: z
+              .number()
+              .positive(
+                "Set a working budget cap above zero before searching.",
+              ),
+            areas: z
+              .array(z.string())
+              .min(
+                1,
+                "Approve at least one working area before running a search.",
+              ),
+            style: z
+              .string()
+              .min(1, "Say what the client's wording means, in a few words.")
+              .max(200),
             unknownPolicy: z.enum(["conditional", "exclude"]),
-            approved: z.literal(true),
+            approved: z.literal(
+              true,
+              "Tick the approval box before running a search.",
+            ),
           })
           .parse(d);
         const brief = { ...l.brief, ...edits };

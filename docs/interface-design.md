@@ -2,7 +2,7 @@
 
 The interface uses the existing Next.js 16 / React 19 application with Motion 13 for page and message transitions, Lucide React for consistent icons, and Radix Dialog for the property detail drawer. Versions are pinned in the lockfile.
 
-The design keeps TextValue blue and supplied Geist fonts, adds a compact navy navigation rail, and groups the conversation, client list and brief into one workspace. The private Ask Libbie command bar sits above the conversation. Property cards use code-drawn architectural concepts, explicitly labelled as illustrations, and open structured details in a drawer. No listing photography or facts were invented.
+The design keeps TextValue blue and supplied Geist fonts, adds a compact navy navigation rail, and groups the conversation, client list, brief and inventory into one workspace. Navigation is three destinations: Workspace, Improve and Settings. Improve presents the whole improvement loop as five numbered steps that mark themselves complete. The private Ask Libbie command bar sits above the conversation. Property cards use code-drawn architectural concepts, explicitly labelled as illustrations, and open structured details in a drawer. No listing photography or facts were invented.
 
 Motion connects actual state changes: shared navigation selection, page entry/exit, newly appended messages, feedback entry and the property drawer. Loading feedback appears only during an actual request. CSS and MotionConfig respect reduced motion. The drawer traps focus, closes with Escape and returns focus to its originating card.
 

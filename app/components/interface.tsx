@@ -2,10 +2,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import {
   MessagesSquare,
-  Building2,
   FlaskConical,
-  ClipboardCheck,
-  ChartNoAxesCombined,
   Settings2,
   BedDouble,
   Trees,
@@ -37,14 +34,7 @@ export function BrandMark() {
     </svg>
   );
 }
-const navigation = [
-  MessagesSquare,
-  Building2,
-  FlaskConical,
-  ClipboardCheck,
-  ChartNoAxesCombined,
-  Settings2,
-];
+const navigation = [MessagesSquare, FlaskConical, Settings2];
 export function NavIcon({ index }: { index: number }) {
   const Icon = navigation[index];
   return <Icon size={18} strokeWidth={1.7} aria-hidden="true" />;
@@ -190,5 +180,146 @@ export function PropertyDrawing({ index }: { index: number }) {
       </svg>
       <span className="drawing-label">CONCEPT DRAWING</span>
     </div>
+  );
+}
+export function Json({ value }: { value: any }) {
+  return <pre>{JSON.stringify(value, null, 2)}</pre>;
+}
+export function download(data: any, name: string) {
+  const url = URL.createObjectURL(
+    new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+  );
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+export function ReferenceEditor({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  let ref: any;
+  try {
+    ref = JSON.parse(value);
+  } catch {
+    ref = {
+      clientType: null,
+      leadStage: null,
+      acceptedAreas: [],
+      money: {
+        meaning: "unknown",
+        period: null,
+        target: null,
+        min: null,
+        max: null,
+      },
+    };
+  }
+  const update = (key: string, v: any) =>
+    onChange(JSON.stringify({ ...ref, [key]: v }, null, 2));
+  return (
+    <>
+      <div className="form-grid">
+        <label>
+          Client intent
+          <select
+            value={ref.clientType || ""}
+            onChange={(e) => update("clientType", e.target.value || null)}
+          >
+            <option value="">Unresolved</option>
+            {["Buyer", "Seller", "Renter", "Landlord"].map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Furthest supported stage
+          <select
+            value={ref.leadStage || ""}
+            onChange={(e) => update("leadStage", e.target.value || null)}
+          >
+            <option value="">Unresolved</option>
+            {["Inquiry", "Qualifying", "Viewing", "Negotiation"].map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <label>
+        Areas the client accepted · separate with commas
+        <input
+          value={ref.acceptedAreas.join(", ")}
+          onChange={(e) =>
+            update(
+              "acceptedAreas",
+              e.target.value
+                .split(",")
+                .map((x) => x.trim())
+                .filter(Boolean),
+            )
+          }
+        />
+      </label>
+      <div className="form-grid">
+        <label>
+          What the money means
+          <select
+            value={ref.money.meaning}
+            onChange={(e) =>
+              update("money", { ...ref.money, meaning: e.target.value })
+            }
+          >
+            {[
+              "unknown",
+              "target",
+              "maximum",
+              "range",
+              "offer",
+              "asking_price",
+            ].map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Per
+          <select
+            value={ref.money.period || ""}
+            onChange={(e) =>
+              update("money", { ...ref.money, period: e.target.value || null })
+            }
+          >
+            <option value="">Unknown</option>
+            {["year", "month", "purchase"].map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        {["target", "min", "max"].map((k) => (
+          <label key={k}>
+            {k} · AED
+            <input
+              type="number"
+              min="0"
+              value={ref.money[k] ?? ""}
+              onChange={(e) =>
+                update("money", {
+                  ...ref.money,
+                  [k]: e.target.value === "" ? null : Number(e.target.value),
+                })
+              }
+            />
+          </label>
+        ))}
+      </div>
+      <details>
+        <summary>The structured answer being saved</summary>
+        <Json value={ref} />
+      </details>
+    </>
   );
 }
